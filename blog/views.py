@@ -5,15 +5,15 @@ from django.http import HttpResponse
 posts = [
 
     {
-        'author': 'NinjaKai'
-        'title': 'blog post 1',
+        'author': 'NinjaKai',
+        'title': 'Blog Post 1',
         'content': 'First post content',
         'date_posted': '29 Jan 2019'
     },
     {
-    'author': 'NinjaKai407'
-    'title': 'blog post 2',
-    'content': 'second post content',
+    'author': 'NinjaKai407',
+    'title': 'Blog Post 2',
+    'content': 'Second Post Content',
     'date_posted': '30 Jan 2019'
     }
 ]
@@ -21,8 +21,10 @@ posts = [
 def home(request):
     #return HttpResponse('<h1>Blog Home</h1>')
     #for templates
-    return render(request, 'blog/home.html')
+    context = {
+        'posts':posts #contect helps us to post data on templates nd its also third argument or render
+    }
+    return render(request, 'blog/home.html',context)
 def about(request):
     #return HttpResponse('<h1>Blog About</h1>')
-    return render(request, 'blog/about.html')
-all participants must be from the affiliated institues og akyu
+    return render(request, 'blog/about.html',{'title':'About'})
